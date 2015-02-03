@@ -5,7 +5,7 @@
 
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage[pdftex]{graphicx}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{lipsum}
 
 \usepackage{listings}
@@ -17,98 +17,12 @@
 \newcolumntype{M}[1]{>{\raggedright}m{#1}}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-
-%Listing Alloy
-\lstdefinelanguage{alloy}{
-  keywords={%
-      assert, pred, all, no, lone, one, some, check, run,
-      but, let, implies, not, iff, in, and, or, set, sig, Int, int,
-      if, then, else, exactly, disj, fact, fun, module, abstract,
-      extends, open, none, univ, iden, seq, enum
-  },
-  sensitive=true,  % case sensitive
-  morecomment=[l]//,%
-  morecomment=[l]{--},%
-  morecomment=[s]{/*}{*/},%
-  morestring=[b]",
-  numbers=none,
-  firstnumber=1,
-  aboveskip=3mm,
-  belowskip=3mm,
-  frame=single,
-  showstringspaces=false,
-  numberstyle=\tiny,
-  stepnumber=2,
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-  basicstyle={\small\ttfamily},
-  commentstyle=\itshape,
-  columns=flexible,
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywordstyle=\bfseries,
-}
-
-% inline
-\def\A{%
-    \lstinline[language=alloy,basicstyle=\ttfamily,columns=fixed]}
- 
-% paragraph
-\lstnewenvironment{alloy}[1][]{%
-  \lstset{language=alloy,
-    floatplacement={tbp},captionpos=b,
-    xrightmargin=8pt,basicstyle=\ttfamily,#1}}{}
-
-%Listing Alloy in tab
-\lstdefinelanguage{alloyt}{
-  keywords={%
-      assert, pred, all, no, lone, one, some, check, run,
-      but, let, implies, not, iff, in, and, or, set, sig, Int, int,
-      if, then, else, exactly, disj, fact, fun, module, abstract,
-      extends, open, none, univ, iden, seq, enum
-  },
-  sensitive=true,  % case sensitive
-  morecomment=[l]//,%
-  morecomment=[l]{--},%
-  morecomment=[s]{/*}{*/},%
-  morestring=[b]",
-  numbers=none,
-  firstnumber=1,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  numberstyle=\tiny,
-  stepnumber=2,
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-  basicstyle={\small\ttfamily},
-  commentstyle=\itshape,
-  columns=flexible,
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywordstyle=\bfseries,
-}
-
-% paragraph
-\lstnewenvironment{alloyt}[1][]{%
-  \lstset{language=alloyt,
-    floatplacement={tbp},captionpos=b,
-    xrightmargin=8pt,basicstyle=\ttfamily,#1}}{}
- 
-
- 
 \usepackage{color}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \begin{document}
-
-%\title{Génération et analyse automatisées d’ensembles de règles pour Picobot}
-%\author{Quentin BAILLEUL \  Jérémy BOSSUT \  Romain PHILIPPON}
-
-
-%\maketitle
 \begin{titlepage}
 \begin{center}
 
@@ -142,37 +56,43 @@ Quentin BAILLEUL \  Romain PHILIPPON
 L'informatique est une discipline qui évolue rapidement et
 il est nécessaire de comprendre
 les processus évolutifs qui prévalent dans de nouvelles formes de
-développement de logiciels, surtout dans un environement Open source.
+développement de logiciels notamment dans un environement Open source.
 \\
 
 Beaucoup de travaux et d'analyses sont fournies à propos de la
 création et de l'évolution de logiciels propriétaires, à l'inverse de
-l'étude sur les logiciels Open Sources. Ceux-ci ayant un environement
-et donc une évolution différente. 
+l'étude sur les logiciels Open Sources. 
 \\
 
-Ce qui suggère que les théories existantes sur l'évolution des logiciels
+Ceci suggère que les théories existantes sur l'évolution des logiciels
 sont différentes pour les logiciels open source.
 
-Dans cet optique les recherches de N Smith, A Capiluppi, et
-J Fernandez-Ramil tendent à améliorer voir redéfinir ces théories
+Dans cette optique les recherches de N Smith, A Capiluppi, et
+J Fernandez-Ramil tendent à améliorer voir redéfinir ces théories.
 \\
 
-Leur article(mettre source) utilise les théories de l'évolution du logiciel
+Leur article utilise les théories de l'évolution du logiciel
 afin de reproduire et d'expliquer les observations empiriques d'un ensemble
-de systèmes Open Source.
-
-L'article se repose sur une simulation multi-agents de
-développement logiciel dans un environement Open Source
+de systèmes Open Source. Pour cela, l'article se repose sur une simulation multi-agents de
+développement logiciel dans un environement Open Source.
 \\
 
 Le but de ce rapport sera de modifier la simulation en ajoutant des
-paramêtres afin de rajouter du réalisme (inverse du rasoir d'Ocam) et
-enfin de comparer les résultats.
+paramètres afin de rajouter du réalisme afin de comparer les résultats pour
+déterminer si les règles du comportement suivent la règle du Rasoir d'Ocam, c'est à dire
+qu'il suffit d'un ensemble de règles réduits au strict minimum pour reproduire l'évolution du
+développement d'un logiciel open-source. Ou au contraire, si les résultats mis en lumière dans
+ce rapport tendent à prouver l'inverse.
+\\
+
+Dans un premier temps, nous présenterons le modèle de N. Smith, A. Capiluppi et J. Fernandez-Ramil,
+puis dans une seconde partie s'attardera sur la version modifiée et les nouveautés implémentées. Puis
+dans la troisième partie, nous comparerons les résultats obtenus avec les résultats du modèle de base.
+Puis nous terminerons par une conclusion.
+
+\newpage
 
 \section{Simulation de base}
-
-
 
 \begin{figure}[H]
  \centerline{\includegraphics[scale=0.45]{pictures/Image0.png}}
@@ -181,14 +101,10 @@ enfin de comparer les résultats.
   sont des prérequis non satisfaits.}
  \end{figure}
 
-
-
-La simulation du projet de N Smith, A Capiluppi, et J Fernandez-Ramil;
-est basée sur trois types d'agents :
-
+La simulation du projet de N Smith, A Capiluppi, et J Fernandez-Ramil est basée sur trois types d'agents :
 
 \subsection{Les Modules}
-Un module représente un fonctionnalité du logiciel. Chaque module comporte un score de complexité et un score de santé (c'est-à-dire la stabilité du code). Ces scores varient selon l'action effectuée par le développeur. Un module peut créer des agents \textit{prérequis} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
+Un module représente une fonctionnalité du logiciel. Chaque module comporte un score de complexité et un score de santé (c'est-à-dire la stabilité du code). Ces scores varient selon l'action effectuée par le développeur. Un module peut créer des agents \textit{prérequis} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
 
 \newpage
 
@@ -215,7 +131,7 @@ Dès que le développeur achève l'une de ces actions, il meurt si son score d'e
   simulé via le modèle présenté dans ce papier.}
  \end{figure}
 
-Pour apporter du réalisme à la simulation, plusieurs paramêtres ont été introduits :
+Pour apporter du réalisme à la simulation, plusieurs paramètres ont été introduits :
 
 \subsection{Module}
 Un module est maintenant déterminé par un langage de programmation. Il ne peut pas être développé ou factorisé si par un développeur ne connait pas ce langage. En outres, le module a aussi une chance d'être déstabilisé par le développeur (sa santé baissera) proportionnellement à son expérience. Plus un développeur est expérimenté moins il aura de chance de déstabiliser le code. Et quand bien même un développeur expérimenté introduit du code néfaste il ne sera pas aussi instable qu'un code introduit par un développeur inexpérimenté.
@@ -223,7 +139,9 @@ Un module est maintenant déterminé par un langage de programmation. Il ne peut
 \newpage
 \subsection{Développeur}
 Un développeur est maintenant doté d'une expérience. Plus il développe ou factorise du code, plus son expérience augmente. L'expérience détermine la capacité plus ou moins importante à modifier le code (modification de la santé et/ou de la complexité du code). 
-D'ailleurs, un développeur n'est plus en mesure de développer un module si celui-ci contient des \textit{prérequis} dans son entourage. Le but est de modéliser les dépendances entre modules.\\
+D'ailleurs, un développeur n'est plus en mesure de développer un module si celui-ci contient des \textit{prérequis} dans son entourage. Le but est de modéliser les dépendances entre modules.
+\\
+
 Le développeur est aussi doté d'une panoplie de langages connus qui lui permet de travailler sur les modules dont il connait le langage.
 
 \section{Comparaison des résultats}
