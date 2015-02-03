@@ -67,14 +67,14 @@ l'étude sur les logiciels Open Sources.
 Ceci suggère que les théories existantes sur l'évolution des logiciels
 sont différentes pour les logiciels open source.
 
-Dans cette optique les recherches de N Smith, A Capiluppi, et
-J Fernandez-Ramil tendent à améliorer voir redéfinir ces théories.
+Dans cette optique \href{http://oro.open.ac.uk/4698/1/}{les recherches de N Smith, A Capiluppi, et
+J Fernandez-Ramil} tendent à améliorer voir redéfinir ces théories.
 \\
 
 Leur article utilise les théories de l'évolution du logiciel
 afin de reproduire et d'expliquer les observations empiriques d'un ensemble
-de systèmes Open Source. Pour cela, l'article se repose sur une simulation multi-agents de
-développement logiciel dans un environement Open Source.
+de systèmes Open Source. Pour cela, l'article se repose sur une
+simulation multi-agents de développement logiciel dans un environement Open Source.
 \\
 
 Le but de ce rapport sera de modifier la simulation en ajoutant des
@@ -85,7 +85,7 @@ développement d'un logiciel open-source. Ou au contraire, si les résultats mis
 ce rapport tendent à prouver l'inverse.
 \\
 
-Dans un premier temps, nous présenterons le modèle de N. Smith, A. Capiluppi et J. Fernandez-Ramil,
+Dans un premier temps, nous présenterons le modèle de \href{http://oro.open.ac.uk/4698/1/}{N. Smith, A. Capiluppi et J. Fernandez-Ramil},
 puis dans une seconde partie s'attardera sur la version modifiée et les nouveautés implémentées. Puis
 dans la troisième partie, nous comparerons les résultats obtenus avec les résultats du modèle de base.
 Puis nous terminerons par une conclusion.
@@ -101,21 +101,29 @@ Puis nous terminerons par une conclusion.
   sont des prérequis non satisfaits.}
  \end{figure}
 
-La simulation du projet de N Smith, A Capiluppi, et J Fernandez-Ramil est basée sur trois types d'agents :
+La simulation du \href{http://oro.open.ac.uk/4698/1/}{projet de N Smith, A Capiluppi, et J Fernandez-Ramil} est basée sur trois types d'agents :
 
 \subsection{Les Modules}
-Un module représente une fonctionnalité du logiciel. Chaque module comporte un score de complexité et un score de santé (c'est-à-dire la stabilité du code). Ces scores varient selon l'action effectuée par le développeur. Un module peut créer des agents \textit{prérequis} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
+\label{sec:modul}
+Un module représente une fonctionnalité du logiciel. Chaque module
+comporte un score de complexité et un score de santé (c'est-à-dire la
+stabilité du code). Ces scores varient selon l'action effectuée par le
+développeur. Un module peut créer des agents \textit{prérequis} \up{\ref{sec:prer}} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
 
 \newpage
 
 \subsection{Les Prérequis}
-Les prérequis symbolisent une spécification logicielle qui attend qu'un module soit crée par développeur.
+\label{sec:prer}
+Les prérequis symbolisent une spécification logicielle qui attend
+qu'un module \up{\ref{sec:modul}} soit crée par développeur \up{\ref{sec:dev}}.
 
 \subsection{Les Développeurs}
+\label{sec:dev}
 Un développeur se définit par son score d'ennui. Les développeurs se promènent aléatoirement dans l'espace de simulation. À chaque déplacement un développeur peut effectuer une des actions suivantes :
 
 \begin{enumerate}
-  \item Si il rencontre un prérequis le développeur produit à l'emplacement de celui-ci un module. Le prérequis meurt à l'issue de cette opération.
+  \item Si il rencontre un prérequis \up{\ref{sec:prer}} le développeur
+    produit à l'emplacement de celui-ci un module \up{\ref{sec:modul}}. Le prérequis meurt à l'issue de cette opération.
   \item{Si il se trouve sur un module et que la santé et la complexité ne dépasse pas un seuil donné, le développeur factorise le module. Cela induit une réduction de la complexité de ce dernier.}
   \item{Si il se trouve sur un module et qu'il ne peut pas le factoriser, il va le développer. C'est-à-dire qu'il augmente la complexité et la santé si et seulement si la complexité de ce module ne dépasse pas un seuil donné}
   \item{Si il ne peut pas réaliser une des actions présentées ci-dessus alors il incrémente son score d'ennui de 1}
