@@ -166,12 +166,13 @@ L'article se repose sur une simulation multi-agents de
 développement logiciel dans un environement Open Source
 \\
 
-Le but de ce rapport sera de modifier la simulation en ajouter des
-paramêtre afin de rajouter du réalisme (inverse du rasoir d'ocam) et
+Le but de ce rapport sera de modifier la simulation en ajoutant des
+paramêtres afin de rajouter du réalisme (inverse du rasoir d'ocam) et
 enfin de comparer les résultats.
 
 \section{Simulation de base}
 \subsection{Modèle}
+
 
 \begin{figure}[H]
  \centerline{\includegraphics[scale=0.45]{pictures/Image0.png}}
@@ -181,17 +182,45 @@ enfin de comparer les résultats.
  \end{figure}
 
 
-\subsection{Données empiriques}
 
-\subsection{Résultats}
+La simulation du projet de N Smith, A Capiluppi, et J Fernandez-Ramil;
+est basée sur trois types d'agents :
 
-\section{Simulation modifiée (?)}
 
-\subsection{Modèle}
+\subsubsection{Les Modules}
+Un module représente un fonctionnalité du logiciel. Chaque module comporte un score de complexité et un score de santé (c'est-à-dire la stabilité du code). Ces scores varient selon l'action effectuée par le développeur. Un module peut créer des agents \textit{prérequis} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
 
-\subsection{Résultats}
+\newpage
+
+\subsubsection{Les Prérequis}
+Les prérequis symbolisent une spécification logicielle qui attend qu'un module soit crée par développeur.
+
+\subsubsection{Les Développeurs}
+Un développeur se définit par son score d'ennui. Les développeurs se promènent aléatoirement dans l'espace de simulation. À chaque déplacement un développeur peut effectuer une des actions suivantes :
+
+\begin{enumerate}
+  \item Si il rencontre un prérequis le développeur produit à l'emplacement de celui-ci un module. Le prérequis meurt à l'issue de cette opération.
+  \item{Si il se trouve sur un module et que la santé et la complexité ne dépasse pas un seuil donné, le développeur factorise le module. Cela induit une réduction de la complexité de ce dernier.}
+  \item{Si il se trouve sur un module et qu'il ne peut pas le factoriser, il va le développer. C'est-à-dire qu'il augmente la complexité et la santé si et seulement si la complexité de ce module ne dépasse pas un seuil donné}
+  \item{Si il ne peut pas réaliser une des actions présentées ci-dessus alors il incrémente son score d'ennui de 1}
+\end{enumerate}
+
+Dès que le développeur achève l'une de ces actions, il meurt si son score d'ennui est supérieur à un seuil. Sinon il se déplace en se dirigeant dans une direction aléatoire.
+
+\section{Simulation modifiée}
+Pour apporter du réalisme à la simulation, plusieurs paramêtres ont été introduits :
+
+\subsection{Module}
+Un module est maintenant déterminé par un langage de programmation. Il ne peut pas être développé ou factorisé si par un développeur ne connait pas ce langage. En outres, le module a aussi une chance d'être déstabilisé par le développeur (sa santé baissera) proportionnellement à son expérience. Plus un développeur est expérimenté moins il aura de chance de déstabiliser le code. Et quand bien même un développeur expérimenté introduit du code néfaste il ne sera pas aussi instable qu'un code introduit par un développeur inexpérimenté.
+
+\newpage
+\subsection{Développeur}
+Un développeur est maintenant doté d'une expérience. Plus il développe ou factorise du code, plus son expérience augmente. L'expérience détermine la capacité plus ou moins importante à modifier le code (modification de la santé et/ou de la complexité du code). 
+D'ailleurs, un développeur n'est plus en mesure de développer un module si celui-ci contient des \textit{prérequis} dans son entourage. Le but est de modéliser les dépendances entre modules.\\
+Le développeur est aussi doté d'une panoplie de langages connus qui lui permet de travailler sur les modules dont il connait le langage.
 
 \section{Comparaison des résultats}
+
 
 \section{Conclusion}
 
