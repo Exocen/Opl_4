@@ -24,26 +24,26 @@
 
 \begin{document}
 \begin{titlepage}
-\begin{center}
+  \begin{center}
 
-% Upper part of the page. The '~' is needed because \\
-% only works if a paragraph has started.
-\includegraphics[width=0.5\textwidth]{pictures/ul.png}~\\[1cm]
+    % Upper part of the page. The '~' is needed because \\
+    % only works if a paragraph has started.
+    \includegraphics[width=0.5\textwidth]{pictures/ul.png}~\\[1cm]
 
-% Title
-\HRule \\[0.2cm]
-{ \huge \bfseries Simulation à base d'agents de l'évolution d'un
-  logiciel Open Source \\[0.4cm] }
+    % Title
+    \HRule \\[0.2cm]
+    { \huge \bfseries Simulation à base d'agents de l'évolution d'un
+      logiciel Open Source \\[0.4cm] }
 
-\HRule \\[1.5cm]
-Quentin BAILLEUL \  Romain PHILIPPON
+    \HRule \\[1.5cm]
+    Quentin BAILLEUL \  Romain PHILIPPON
 
-\vfill
+    \vfill
 
-% Bottom of the page
-{\large \today}
+    % Bottom of the page
+    {\large \today}
 
-\end{center}
+  \end{center}
 \end{titlepage}
 
 \newpage
@@ -52,7 +52,7 @@ Quentin BAILLEUL \  Romain PHILIPPON
 \newpage
 
 \section{Introduction}
-%inspiration du abstract de base
+% inspiration du abstract de base
 L'informatique est une discipline qui évolue rapidement et
 il est nécessaire de comprendre
 les processus évolutifs qui prévalent dans de nouvelles formes de
@@ -61,14 +61,14 @@ développement de logiciels notamment dans un environement Open source.
 
 Beaucoup de travaux et d'analyses sont fournies à propos de la
 création et de l'évolution de logiciels propriétaires, à l'inverse de
-l'étude sur les logiciels Open Sources. 
+l'étude sur les logiciels Open Sources.
 \\
 
 Ceci suggère que les théories existantes sur l'évolution des logiciels
 sont différentes pour les logiciels open source.
 
 Dans cette optique \href{http://oro.open.ac.uk/4698/1/}{les recherches de N Smith, A Capiluppi, et
-J Fernandez-Ramil} tendent à améliorer voir redéfinir ces théories.
+  J Fernandez-Ramil} tendent à améliorer voir redéfinir ces théories.
 \\
 
 Leur article utilise les théories de l'évolution du logiciel
@@ -95,11 +95,11 @@ Puis nous terminerons par une conclusion.
 \section{Simulation de base}
 
 \begin{figure}[H]
- \centerline{\includegraphics[scale=0.45]{pictures/Image0.png}}
-\caption{Un exemple de développement de logiciel Open Source
-  simulé. Les carrés sont des patches de code. Les cercles noirs
-  sont des prérequis non satisfaits.}
- \end{figure}
+  \centerline{\includegraphics[scale=0.45]{pictures/Image0.png}}
+  \caption{Un exemple de développement de logiciel Open Source
+    simulé. Les carrés sont des patches de code. Les cercles noirs
+    sont des prérequis non satisfaits.}
+\end{figure}
 
 La simulation du \href{http://oro.open.ac.uk/4698/1/}{projet de N Smith, A Capiluppi, et J Fernandez-Ramil} est basée sur trois types d'agents :
 
@@ -122,11 +122,11 @@ qu'un module \up{\ref{sec:modul}} soit crée par développeur \up{\ref{sec:dev}}
 Un développeur se définit par son score d'ennui. Les développeurs se promènent aléatoirement dans l'espace de simulation. À chaque déplacement un développeur peut effectuer une des actions suivantes :
 
 \begin{enumerate}
-  \item Si il rencontre un prérequis \up{\ref{sec:prer}} le développeur
-    produit à l'emplacement de celui-ci un module \up{\ref{sec:modul}}. Le prérequis meurt à l'issue de cette opération.
-  \item{Si il se trouve sur un module et que la santé et la complexité ne dépasse pas un seuil donné, le développeur factorise le module. Cela induit une réduction de la complexité de ce dernier.}
-  \item{Si il se trouve sur un module et qu'il ne peut pas le factoriser, il va le développer. C'est-à-dire qu'il augmente la complexité et la santé si et seulement si la complexité de ce module ne dépasse pas un seuil donné}
-  \item{Si il ne peut pas réaliser une des actions présentées ci-dessus alors il incrémente son score d'ennui de 1}
+\item Si il rencontre un prérequis \up{\ref{sec:prer}} le développeur
+  produit à l'emplacement de celui-ci un module \up{\ref{sec:modul}}. Le prérequis meurt à l'issue de cette opération.
+\item{Si il se trouve sur un module et que la santé et la complexité ne dépasse pas un seuil donné, le développeur factorise le module. Cela induit une réduction de la complexité de ce dernier.}
+\item{Si il se trouve sur un module et qu'il ne peut pas le factoriser, il va le développer. C'est-à-dire qu'il augmente la complexité et la santé si et seulement si la complexité de ce module ne dépasse pas un seuil donné}
+\item{Si il ne peut pas réaliser une des actions présentées ci-dessus alors il incrémente son score d'ennui de 1}
 \end{enumerate}
 
 Dès que le développeur achève l'une de ces actions, il meurt si son score d'ennui est supérieur à un seuil. Sinon il se déplace en se dirigeant dans une direction aléatoire.
@@ -134,10 +134,10 @@ Dès que le développeur achève l'une de ces actions, il meurt si son score d'e
 \section{Simulation modifiée}
 
 \begin{figure}[H]
- \centerline{\includegraphics[scale=0.45]{pictures/Image1.png}}
-\caption{Un exemple de développement de logiciel Open Source
-  simulé via le modèle présenté dans ce papier.}
- \end{figure}
+  \centerline{\includegraphics[scale=0.45]{pictures/Image1.png}}
+  \caption{Un exemple de développement de logiciel Open Source
+    simulé via le modèle présenté dans ce papier.}
+\end{figure}
 
 Pour apporter du réalisme à la simulation, plusieurs paramètres ont été introduits :
 
@@ -146,7 +146,7 @@ Un module est maintenant déterminé par un langage de programmation. Il ne peut
 
 \newpage
 \subsection{Développeur}
-Un développeur est maintenant doté d'une expérience. Plus il développe ou factorise du code, plus son expérience augmente. L'expérience détermine la capacité plus ou moins importante à modifier le code (modification de la santé et/ou de la complexité du code). 
+Un développeur est maintenant doté d'une expérience. Plus il développe ou factorise du code, plus son expérience augmente. L'expérience détermine la capacité plus ou moins importante à modifier le code (modification de la santé et/ou de la complexité du code).
 D'ailleurs, un développeur n'est plus en mesure de développer un module si celui-ci contient des \textit{prérequis} dans son entourage. Le but est de modéliser les dépendances entre modules.
 \\
 
@@ -154,15 +154,71 @@ Le développeur est aussi doté d'une panoplie de langages connus qui lui permet
 
 \section{Comparaison des résultats}
 
+\begin{figure}[H]
+
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{pictures/sensibilite_faible_ennui_complexite.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{pictures/sensibilite_faible_ennui_sante.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{pictures/sensibilite_fort_ennui_complexite.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{pictures/sensibilite_fort_ennui_sante.png}
+  \end{subfigure}
+
+  \caption{Comparaison sensibilité ennui}
+\end{figure}
 % comparaison sensibilité ennui
 
+\begin{figure}[H]
+
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{pictures/seuil5_complexite_fitness.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{pictures/seuil_complexite10_fitness5.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{pictures/seuil_complexite5_fitness8.png}
+  \end{subfigure}
+
+  \caption{Nombre de développeurs sur complexité et fitnesse }
+\end{figure}
 % nombre dev sur complexité et fitnesse
 
+\begin{figure}[H]
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{pictures/langage40_experience.png}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{pictures/langage40_experience.png}
+  \end{subfigure}
+  \caption{Langage et expérience }
+\end{figure}
 % langage & expérience
 
+\begin{figure}[H]
+  \centerline{\includegraphics[scale=1]{pictures/popu_requirement.png}}
+  \caption{Nombre spécifications sur le nombre de développeurs}
+\end{figure}
 % nombre requirement par la pop de dev
 
-% sinusoide ennui
+\begin{figure}[H]
+  \centerline{\includegraphics[scale=1]{pictures/sinusoide_ennui.png}}
+  \caption{Sinusoide ennui}
+\end{figure}
 
 \section{Conclusion}
 L'ajout de paramètres à la simulation de base a permis de tirer des
@@ -173,7 +229,7 @@ encore être appliqués :
 \item{l'appararition des spécifications peut être optimisé}
 \item{la notion d'expérience des développeurs peut être rafinée, en
     fonction de leur capacités algorithmiques ou technologiques}
-\end{enumerate} 
+\end{enumerate}
 Une infinité d'autres exemples peuvent être rajoutés.
 
 
