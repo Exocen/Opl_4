@@ -174,7 +174,7 @@ Le développeur est aussi doté d'une panoplie de langages connus qui lui permet
     \includegraphics[width=.8\linewidth]{pictures/sensibilite_fort_ennui_sante.png}
   \end{subfigure}
 
-  \caption{Comparaison sensibilité ennui}
+  \caption{Comparaison du seuil de l'ennui, les deux premières images montre un seuil faible contrairement au deux suivantes où les développeurs s'ennuient moins vite}
 \end{figure}
 Tout comme le modèle de base, le modèle développé pour ce rapport reste sensible au seuil d'ennui des développeurs. Ainsi, un seuil d'ennui faible
 entraine un développement des modules en terme de complexité et de santé bas contrairement à un seuil qui est plus élevé.
@@ -196,7 +196,7 @@ entraine un développement des modules en terme de complexité et de santé bas 
     \includegraphics[width=1\linewidth]{pictures/seuil_complexite5_fitness8.png}
   \end{subfigure}
 
-  \caption{Nombre de développeurs sur complexité et santé }
+  \caption{Comparaison de la sensibilité de la santé par rapport à la complexité}
 \end{figure}
 Autre paramètre sur lequel le modèle modifié reste aussi très sensible : la santé du code. Pour qu'un projet soit plus complexe que stable, il est nécessaire de préciser
 que le seuil de complexité désignant un module comme très complexe dans le projet soit beaucoup important que le seuil équivalent pour la santé.
@@ -212,7 +212,7 @@ que le seuil de complexité désignant un module comme très complexe dans le pr
     \centering
     \includegraphics[width=1\linewidth]{pictures/langage40_experience.png}
   \end{subfigure}
-  \caption{Langage et expérience }
+  \caption{Comparaison du nombre de langages de programmation sur la moyenne de l'expérience des utilisateurs. La première images réfère à une simulation où un projet possède au maximum 5 langages de programmation tandis que la seconde en comporte 40}
 \end{figure}
 
 La simulation révèle que le nombre de langage utilisé au sein d'un projet n'a pas de répercussion sur l'expérience moyenne de tout les développeurs.
@@ -222,7 +222,7 @@ Ce résultat montre que les développeurs, peu importe le nombre de langages pro
 
 \begin{figure}[H]
   \centerline{\includegraphics[scale=1]{pictures/popu_requirement.png}}
-  \caption{Nombre spécifications sur le nombre de développeurs}
+  \caption{Courbes représentant le nombre total de spécifications et le nombre total de développeurs à l'étape t d'une simulation}
 \end{figure}
 % nombre requirement par la pop de dev
 Les simulations ont démontré que la population des développeurs sur un projet, peu importe si le nombre maximal posé dans une simulation, dépend du nombre
@@ -231,17 +231,18 @@ de spécifications présentes. Il n'est pas possible pour un projet d'acceuillir
 
 \begin{figure}[H]
   \centerline{\includegraphics[scale=1]{pictures/sinusoide_ennui.png}}
-  \caption{Sinusoide ennui}
+  \caption{Courbe représentant l'ennui moyen des développeurs durant une simulation}
 \end{figure}
 
 % comparaison sensibilité ennui
 Enfin, un autre résultat montre la tendance des développeurs à quitter un projet lorsqu'un module sur lequel il travaillait est terminé en terme de complexité et de santé. En effet, plus la complexité est importante, plus il est difficile pour un développeur d'augmenter cette complexité. Tout comme la santé du code qui une fois atteint le seuil désignant les modules étant considéré comme très stables dans le projet, le développeur ne ressent plus le besoin de factoriser le code dans le but de le simplifier.
 
+\newpage
 
 \section{Conclusion}
-Les résultats mise en valeur par le modèle modifié reste sur certains points similaire au modèle de base.
+Les résultats mis en valeur par le modèle modifié reste sur certains points similaire au modèle de base.
 Mais l'ajout de paramètres à la simulation de base a permis de tirer des
-résultats plus précis sur notamment l'expérience globale des développeurs selon le nombre de langages de programmation
+résultats plus précis, notamment sur l'expérience globale des développeurs selon le nombre de langages de programmation
 utilisé dans un projet. D'autres résultats non abordé dans l'article ont été mise en avant comme le comportement des développeurs
 a quitté le projet lorsqu'ils ont terminé de développer les nouvelles fonctionnalités. Cependant, nous pouvons améliorer la simulation sur les
 points suivants :

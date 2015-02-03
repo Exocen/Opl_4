@@ -116,14 +116,15 @@ to evolve
   ask requirements [
     ask patch-here [
       if ((random 100) < chance-dev and fitness < rate-boredom-threshold) [ ;;and (fitness < boredom-threshold) 
-        sprout-developers 1 [set color blue set size 3 set shape "Person" set boredom-threshold (random 2 + 1) set master n-values (nb-language / 2) [random nb-language] set experience 1]
+        sprout-developers 1 [set color blue set size 3 set shape "Person" set boredom-threshold (random 2 + 1) set master n-values (nb-language / 4) [random nb-language] set experience 1]
       ]
     ]
   ]
   
-  if (count developers) < max-developer [
-    ask patches with [isTouched] [
-      if (((random 100) < 50) and (any? neighbors with [isTouched = false and ((count requirements-here) = 0)])) [
+
+  ask patches with [isTouched] [
+    if (((random 100) < 50) and (any? neighbors with [isTouched = false and ((count requirements-here) = 0)])) [
+      if (count developers) < max-developer [
         ask one-of (neighbors with [isTouched = false and ((count requirements-here) = 0)]) 
         [sprout-requirements 1 [set color green set size 1 set shape "circle"]]
       ]
@@ -141,13 +142,13 @@ to runceOnce
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-774
+845
 10
-1652
-909
+1281
+467
 50
 50
-8.6
+4.22
 1
 10
 1
@@ -210,7 +211,7 @@ fitness-threshold
 fitness-threshold
 1
 max-fitness
-7
+5
 1
 1
 NIL
@@ -225,7 +226,7 @@ complexity-threshold
 complexity-threshold
 1
 max-complexity
-6
+5
 1
 1
 NIL
@@ -260,7 +261,7 @@ max-developer
 max-developer
 5
 200
-40
+65
 5
 1
 NIL
@@ -303,7 +304,7 @@ SWITCH
 377
 show-fitness
 show-fitness
-1
+0
 1
 -1000
 
@@ -316,7 +317,7 @@ rate-boredom-threshold
 rate-boredom-threshold
 1
 50
-5
+50
 1
 1
 NIL
@@ -340,7 +341,6 @@ true
 PENS
 "Developer" 1.0 0 -12440034 true "" "plot count developers"
 "Requirement" 1.0 0 -14439633 true "" "plot count requirements"
-"Module" 1.0 0 -14454117 true "" "plot count patches with [isTouched]"
 
 PLOT
 270
@@ -370,7 +370,7 @@ nb-language
 nb-language
 0
 50
-19
+40
 1
 1
 NIL
@@ -418,7 +418,7 @@ chance-dev
 chance-dev
 1
 99
-13
+18
 1
 1
 NIL
