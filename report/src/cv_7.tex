@@ -147,15 +147,15 @@ développement de logiciels, surtout dans un environement Open source.
 
 Beaucoup de travaux et d'analyses sont fournies à propos de la
 création et de l'évolution de logiciels propriétaires, à l'inverse de
-l'étude sur les logiciels Open Sources. (?)Ceux-ci ayant un environement
-et donc une évolution différente (?). 
+l'étude sur les logiciels Open Sources. Ceux-ci ayant un environement
+et donc une évolution différente. 
 \\
 
 Ce qui suggère que les théories existantes sur l'évolution des logiciels
 sont différentes pour les logiciels open source.
 
 Dans cet optique les recherches de N Smith, A Capiluppi, et
-J Fernandez-Ramil tendent(?) et améliorer voir redéfinir ces théories
+J Fernandez-Ramil tendent à améliorer voir redéfinir ces théories
 \\
 
 Leur article(mettre source) utilise les théories de l'évolution du logiciel
@@ -167,11 +167,11 @@ développement logiciel dans un environement Open Source
 \\
 
 Le but de ce rapport sera de modifier la simulation en ajoutant des
-paramêtres afin de rajouter du réalisme (inverse du rasoir d'ocam) et
+paramêtres afin de rajouter du réalisme (inverse du rasoir d'Ocam) et
 enfin de comparer les résultats.
 
 \section{Simulation de base}
-\subsection{Modèle}
+
 
 
 \begin{figure}[H]
@@ -187,15 +187,15 @@ La simulation du projet de N Smith, A Capiluppi, et J Fernandez-Ramil;
 est basée sur trois types d'agents :
 
 
-\subsubsection{Les Modules}
+\subsection{Les Modules}
 Un module représente un fonctionnalité du logiciel. Chaque module comporte un score de complexité et un score de santé (c'est-à-dire la stabilité du code). Ces scores varient selon l'action effectuée par le développeur. Un module peut créer des agents \textit{prérequis} si ses voisins (voisinage de Moore de 1) ne sont pas des modules.
 
 \newpage
 
-\subsubsection{Les Prérequis}
+\subsection{Les Prérequis}
 Les prérequis symbolisent une spécification logicielle qui attend qu'un module soit crée par développeur.
 
-\subsubsection{Les Développeurs}
+\subsection{Les Développeurs}
 Un développeur se définit par son score d'ennui. Les développeurs se promènent aléatoirement dans l'espace de simulation. À chaque déplacement un développeur peut effectuer une des actions suivantes :
 
 \begin{enumerate}
@@ -208,6 +208,13 @@ Un développeur se définit par son score d'ennui. Les développeurs se promène
 Dès que le développeur achève l'une de ces actions, il meurt si son score d'ennui est supérieur à un seuil. Sinon il se déplace en se dirigeant dans une direction aléatoire.
 
 \section{Simulation modifiée}
+
+\begin{figure}[H]
+ \centerline{\includegraphics[scale=0.45]{pictures/Image1.png}}
+\caption{Un exemple de développement de logiciel Open Source
+  simulé via le modèle présenté dans ce papier.}
+ \end{figure}
+
 Pour apporter du réalisme à la simulation, plusieurs paramêtres ont été introduits :
 
 \subsection{Module}
